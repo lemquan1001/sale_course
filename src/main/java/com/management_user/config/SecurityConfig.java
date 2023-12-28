@@ -24,7 +24,7 @@ public class SecurityConfig {
       .addFilterBefore(new JwtAuthFilter(userAuthProvider), BasicAuthenticationFilter.class)//bộ lọc tự tạo ra--> bộ lọc xác thực chính
       .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))//bộ lọc cow bản
       .authorizeHttpRequests((requests) -> requests
-        .requestMatchers(HttpMethod.POST, "/login","/register").permitAll()
+        .requestMatchers(HttpMethod.POST, "/login","/register","/forgot-password","/change-password").permitAll()
               .requestMatchers("/confirm").permitAll()
         .requestMatchers( "/student/**").authenticated() // Chỉ cho phép người dùng đã đăng nhập
         .requestMatchers("/teacher/**").authenticated()
